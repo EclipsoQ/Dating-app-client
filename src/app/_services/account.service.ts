@@ -29,7 +29,7 @@ export class AccountService {
       map(user => {
         if (user) {
           localStorage.setItem("user", JSON.stringify(user));
-          this.currentUser .set(user);
+          this.currentUser.set(user);
         }
         return user;
       })  
