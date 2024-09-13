@@ -31,38 +31,39 @@
     </ul>
 
     @if (accountService.currentUser()) {
-    <div class="dropdown" dropdown>
-      <a class="dropdown-toggle text-light" dropdownToggle> 
-        Welcome {{accountService.currentUser()?.username | titlecase}} 
-      </a>
-      <div class="dropdown-menu" *dropdownMenu>
-        <a class="dropdown-item" routerLink="/member/edit">Edit profile</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" (click)="logout()">Logout</a>
+      <div class="dropdown" dropdown>
+        <img src="{{ accountService.currentUser()?.photoUrl || './assets/user.png' }}" alt="user main image" class="me-2">
+        <a class="dropdown-toggle text-light" dropdownToggle> 
+          Welcome {{accountService.currentUser()?.username | titlecase}} 
+        </a>
+        <div class="dropdown-menu" *dropdownMenu>
+          <a class="dropdown-item" routerLink="/member/edit">Edit profile</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="logout()">Logout</a>
+        </div>
       </div>
-    </div>
     } @else {
-    <form
-      class="d-flex"
-      #loginForm="ngForm"
-      (ngSubmit)="login()"
-      autocomplete="off"
-    >
-      <input
-        class="form-control me-2"
-        placeholder="Username"
-        name="username"
-        [(ngModel)]="model.username"
-      />
-      <input
-        class="form-control me-2"
-        placeholder="Password"
-        type="password"
-        name="password"
-        [(ngModel)]="model.password"
-      />
-      <button class="btn btn-success" type="submit">Login</button>
-    </form>
+      <form
+        class="d-flex"
+        #loginForm="ngForm"
+        (ngSubmit)="login()"
+        autocomplete="off"
+      >
+        <input
+          class="form-control me-2"
+          placeholder="Username"
+          name="username"
+          [(ngModel)]="model.username"
+        />
+        <input
+          class="form-control me-2"
+          placeholder="Password"
+          type="password"
+          name="password"
+          [(ngModel)]="model.password"
+        />
+        <button class="btn btn-success" type="submit">Login</button>
+      </form>
     }
   </div>
 </nav>
